@@ -1,10 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card'
 import { Row } from "react-bootstrap";
+import {useDispatch, useSelector} from 'react-redux';
+import {addCarToCart} from '../../store/cart/action';
+import {selectAllInventory} from '../../store/inventory/selector';
 
 const InventoryCard = (props) => {
+  const dispatch = useDispatch();
+
+  function addToCart(id) {
+      // console.log('Button clicked')
+      dispatch(addCarToCart(id))
+  }
 
   return (
     <div className='col-lg-4 mb-2 d-flex align-self-stretch'>
@@ -18,7 +27,8 @@ const InventoryCard = (props) => {
                     variant='dark'>View Details</Button>
           </Link>
           <Button style={{fontSize: '0.8rem'}} 
-                    variant='dark'>Add To Cart</Button>
+                    variant='dark'
+                    onClick={() => addToCart(props.id)}>Add To Cart</Button>
         </Card.Body>
         <Card.Footer>
           <Row className='d-flex justify-content-around'>
