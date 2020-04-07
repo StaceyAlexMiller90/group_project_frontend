@@ -14,6 +14,7 @@ export default (state = initialState, action) => {
 
     case LOG_OUT:
       localStorage.removeItem("token");
+      localStorage.removeItem("cart")
       return { ...initialState, token: null };
 
     case TOKEN_STILL_VALID:

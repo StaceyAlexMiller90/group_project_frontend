@@ -6,9 +6,12 @@ import { Row } from "react-bootstrap";
 import {useDispatch, useSelector} from 'react-redux';
 import {addCarToCart} from '../../store/cart/action';
 import {selectAllInventory} from '../../store/inventory/selector';
+import { selectToken } from '../../store/user/selectors'
 
 const InventoryCard = (props) => {
   const dispatch = useDispatch();
+  const token = useSelector(selectToken)
+  console.log(token)
 
   function addToCart(id) {
       // console.log('Button clicked')
@@ -26,9 +29,11 @@ const InventoryCard = (props) => {
             <Button style={{fontSize: '0.8rem'}} 
                     variant='dark'>View Details</Button>
           </Link>
-          <Button style={{fontSize: '0.8rem'}} 
-                    variant='dark'
-                    onClick={() => addToCart(props.id)}>Add To Cart</Button>
+          {!token ? <p>Please log in to add to cart</p>
+            : <Button style={{fontSize: '0.8rem'}} 
+            variant='dark'
+            onClick={() => addToCart(props.id)}>Add To Cart</Button>
+          }
         </Card.Body>
         <Card.Footer>
           <Row className='d-flex justify-content-around'>
