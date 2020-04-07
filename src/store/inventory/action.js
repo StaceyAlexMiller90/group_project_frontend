@@ -20,7 +20,7 @@ export const fetchAllInventory = () => {
   return async (dispatch, getState) => {
     dispatch(appLoading)
     try {
-      const response = await axios.get(`${apiUrl}/cars`)
+      const response = await axios.get(`${apiUrl}/inventory`)
       dispatch(allInventoryFetched(response.data))
       console.log(response.data)
     } catch(e) {
