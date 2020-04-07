@@ -17,6 +17,8 @@ const InventoryCard = (props) => {
             <Button style={{fontSize: '0.8rem'}} 
                     variant='dark'>View Details</Button>
           </Link>
+          <Button style={{fontSize: '0.8rem'}} 
+                    variant='dark'>Add To Cart</Button>
         </Card.Body>
         <Card.Footer>
           <Row className='d-flex justify-content-around'>
