@@ -31,8 +31,8 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route path="/inventory" component={Inventory} />
-        <Route path='inventory/:id' component={InventoryById} />
+        <Route exact path="/inventory" component={Inventory} />
+        <Route path='/inventory/:id' component={InventoryById} />
         <Route path='/contact' component={Contact} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
