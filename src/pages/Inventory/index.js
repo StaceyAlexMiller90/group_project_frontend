@@ -10,7 +10,9 @@ export default function Inventory() {
   const inventory = useSelector(selectAllInventory)
 
   useEffect(() => {
-    dispatch(fetchAllInventory())
+    if(inventory.length === 0) {
+      dispatch(fetchAllInventory())
+    }
   }, [])
 
   if (!inventory) {
