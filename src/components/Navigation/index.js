@@ -16,7 +16,7 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        Cool Kids Closing on Cars
+        Completely Cool Cars
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -24,7 +24,7 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/inventory" linkText="View Our Inventory" />
           <NavbarItem path='/contact' linkText='Contact Us' />
-          {token ? <NavbarItem path='cart' linkText='Cart' /> : null}
+          {token ? <NavbarItem path='cart' linkText='Cart: 0' /> : null}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
