@@ -11,6 +11,7 @@ import Homepage from './pages/Homepage';
 import Inventory from './pages/Inventory';
 import InventoryById from './pages/InventoryById';
 import Contact from './pages/Contact';
+import Cart from './components/Cart';
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/inventory" component={Inventory} />
         <Route path='/inventory/:id' component={InventoryById} />
         <Route path='/contact' component={Contact} />
+        <Route path='/cart' component={Cart} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
       </Switch>

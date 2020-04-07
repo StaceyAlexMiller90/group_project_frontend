@@ -24,6 +24,7 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/inventory" linkText="View Our Inventory" />
           <NavbarItem path='/contact' linkText='Contact Us' />
+          {token ? <NavbarItem path='cart' linkText='Cart' /> : null}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
