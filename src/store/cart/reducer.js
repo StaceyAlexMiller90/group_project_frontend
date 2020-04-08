@@ -1,4 +1,4 @@
-import { ADD_PRODUCT_TO_CART, REMOVE_CAR_FROM_CART } from "./action";
+import { ADD_PRODUCT_TO_CART, REMOVE_CAR_FROM_CART, CLEAR_CART } from "./action";
 
 const initialState = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -29,6 +29,9 @@ export default (state = initialState, action) => {
       localStorage.setItem("cart", JSON.stringify([...state]));
 
       return [...state];
+    
+    case CLEAR_CART:
+      return initialState
 
     default:
       return state;

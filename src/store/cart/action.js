@@ -5,6 +5,7 @@ import { selectCart } from "../cart/selector";
 
 export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
 export const REMOVE_CAR_FROM_CART = "REMOVE_CAR_FROM_CART";
+export const CLEAR_CART = "CLEAR_CART";
 
 export const addToCart = (car) => {
   return (dispatch) => {
@@ -31,9 +32,15 @@ export const addCarToCart = (id) => {
     dispatch(appLoading());
     const inventory = selectAllInventory(getState());
 
-    const filteredCar = inventory.filter(car => car.id === parseInt(id))
+    const filteredCar = inventory.filter(car => car.id === id)
     dispatch(addToCart(filteredCar));
     dispatch(appDoneLoading());
+  }
+}
+
+export const emptyCart = () => {
+  return {
+    type: CLEAR_CART
   }
 }
 

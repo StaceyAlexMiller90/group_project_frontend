@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import { fetchInventoryById } from '../../store/inventoryById/action'
 import { selectInventoryById } from '../../store/inventoryById/selector'
 import { selectToken } from '../../store/user/selectors';
-import { addCarToCart } from '../../store/cart/action'
+import { addCarToCart, removeCarFromCart } from '../../store/cart/action'
 
 export default function InventoryById() {
   const dispatch = useDispatch()
@@ -17,11 +17,15 @@ export default function InventoryById() {
   const token = useSelector(selectToken)
 
   useEffect(() => {
-    dispatch(fetchInventoryById(id))
+    dispatch(fetchInventoryById(parseInt(id)))
   }, [])
 
   function addToCart() {
-    dispatch(addCarToCart(id))
+    dispatch(addCarToCart(parseInt(id)))
+}
+
+function removeFromCart() {
+  dispatch(removeCarFromCart(parseInt(id)));
 }
 
   if (!inventory) {
@@ -37,7 +41,7 @@ export default function InventoryById() {
           {!token ? 'Please log in to add to cart'
           : <>
               <Button variant='dark' onClick={addToCart}>Add to Cart</Button>
-              <Button variant='dark'>Remove from cart</Button>
+              <Button variant='dark' onClick={removeFromCart}>Remove from cart</Button>
             </>}
         </Col>
         <Col>

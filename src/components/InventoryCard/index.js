@@ -19,7 +19,7 @@ const InventoryCard = (props) => {
     dispatch(addCarToCart(id));
   }
 
-  function removeFromCart(id) {
+ function removeFromCart(id) {
     //console.log("Clicked", id);
     dispatch(removeCarFromCart(id));
   }
