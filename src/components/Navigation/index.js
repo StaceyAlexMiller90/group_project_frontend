@@ -7,14 +7,13 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
-import {selectCart} from '../../store/cart/selector';
+import { selectCart } from "../../store/cart/selector";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
   const cart = useSelector(selectCart);
 
-  const totalPrice = cart.map(item => item.price).reduce((a, b) => a + b, 0)
-  
+  const totalPrice = cart.map((item) => item.price).reduce((a, b) => a + b, 0);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
@@ -28,8 +27,13 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/inventory" linkText="View Our Inventory" />
-          <NavbarItem path='/contact' linkText='Contact Us' />
-          {token ? <NavbarItem path='cart' linkText={`Cart: ${cart.length} - Total Price €${totalPrice}`} /> : null}
+          <NavbarItem path="/contact" linkText="Contact Us" />
+          {token ? (
+            <NavbarItem
+              path="cart"
+              linkText={`Cart: ${cart.length} - Total Price €${totalPrice}`}
+            />
+          ) : null}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
