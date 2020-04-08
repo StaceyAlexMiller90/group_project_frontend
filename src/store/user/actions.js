@@ -128,7 +128,7 @@ export const addOrder = (
   city, 
   postalCode, 
   country,
-  userId
+  cart
   ) => {
   return async (dispatch, getState) => {
     const state = getState();
@@ -136,9 +136,9 @@ export const addOrder = (
     const token = state.user.token
 
     //console.log('DISPATCH THE ORDER')
-    console.log('INFORMATION TEST', countryCode, phoneNumber, street, houseNumber, aptsuite, city, postalCode, country, userId)
+    console.log('INFORMATION TEST', countryCode, phoneNumber, street, houseNumber, aptsuite, city, postalCode, country, cart)
     
-    const response = axios.post(`${apiUrl}/addorder`, {
+    const response = axios.post(`${apiUrl}/order`, {
       countryCode,
       phoneNumber,
       street,
@@ -147,7 +147,7 @@ export const addOrder = (
       city,
       postalCode,
       country,
-      userId
+      cart: cart
     }, {
       headers: {
         Authorization: `Bearer ${token}`
