@@ -6,9 +6,11 @@ import { Col, Row } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { fetchInventoryById } from '../../store/inventoryById/action'
+import { fetchAllInventory } from '../../store/inventory/action'
 import { selectInventoryById } from '../../store/inventoryById/selector'
 import { selectToken } from '../../store/user/selectors';
 import { addCarToCart, removeCarFromCart } from '../../store/cart/action'
+import { selectAllInventory } from '../../store/inventory/selector';
 
 export default function InventoryById() {
   const dispatch = useDispatch()
@@ -18,6 +20,7 @@ export default function InventoryById() {
 
   useEffect(() => {
     dispatch(fetchInventoryById(parseInt(id)))
+    dispatch(fetchAllInventory())
   }, [])
 
   function addToCart() {
