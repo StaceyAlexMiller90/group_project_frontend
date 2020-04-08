@@ -25,11 +25,15 @@ export const removeCarFromCart = (id) => {
   };
 };
 
+
 export const addCarToCart = (id) => {
   return async (dispatch, getState) => {
+    dispatch(appLoading());
     const inventory = selectAllInventory(getState());
-    const filteredCar = inventory.filter((car) => car.id === id);
+
+    const filteredCar = inventory.filter(car => car.id === parseInt(id))
     dispatch(addToCart(filteredCar));
-    //dispatch(appLoading());
-  };
-};
+    dispatch(appDoneLoading());
+  }
+}
+
