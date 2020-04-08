@@ -1,12 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
-
-function submitOrder(event) {
-  event.preventDefault();
-  console.log('BUTTON WORKING')
-}
 
 export default function OrderForm() {
+  const dispatch = useDispatch();
+  const [countryCode, setCountryCode] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState(0);
+  const [street, setStreet] = useState('');
+  const [houseNumber, setHouseNumber] = useState(0);
+  const [aptsuite, setAptsuite] = useState('');
+  const [city, setCity] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [country, setCountry] = useState('');
+
+
+
+  function submitOrder(event) {
+    event.preventDefault();
+    console.log('BUTTON WORKING', countryCode, phoneNumber, street, houseNumber, aptsuite, city, postalCode, country)
+  }
+
   return (
     <div>
       <header>Please Fill In The Following Information</header>
@@ -16,25 +29,79 @@ export default function OrderForm() {
         Phone
         <br></br>
         <label>Country Code</label>
-          <input />
+          <input 
+          countrycode='countrycode'
+          type='integer'
+          value={countryCode}
+          onChange={event => setCountryCode(event.target.value)}
+          required
+          />
         <label>Number</label>
-          <input />
+          <input
+          phonenumber='phonenumber'
+          type='integer'
+          value={phoneNumber}
+          onChange={event => setPhoneNumber(event.target.value)}
+          required
+          />
         <br></br>  
 
         Address
         <br></br>
         <label>Street</label>
-          <input />
+          <input 
+          street='street'
+          type='string'
+          value={street}
+          onChange={event => setStreet(event.target.value)}
+          required
+          />
         <label>Number</label>
-          <input />
+          <input 
+          housenumber='housenumber'
+          type='integer'
+          value={houseNumber}
+          onChange={event => setHouseNumber(event.target.value)}
+          required
+          />
         <label>Apt/Suite</label>
-          <input />
+          <input 
+          aptsuite='aptsuite'
+          type='string'
+          value={aptsuite}
+          onChange={event => setAptsuite(event.target.value)}
+          />
         <label>City</label>
-          <input />
+          <input 
+          city='city'
+          type='string'
+          value={city}
+          onChange={event => setCity(event.target.value)}
+          required
+          />
         <label>Postal Code</label>
-          <input />
+          <input 
+          postalcode='postalcode'
+          type='string'
+          value={postalCode}
+          onChange={event => setPostalCode(event.target.value)}
+          required
+          />
         <label>Country</label>
-          <input />
+          <input 
+          country='country'
+          type='string'
+          value={country}
+          onChange={event => setCountry(event.target.value)}
+          required
+          />
+
+        {/* to be completed to submit userId with order
+        <input 
+        type='hidden'
+        value={user.id}
+        onChnage
+        /> */}
 
         
         <button type='submit'>Submit</button>
