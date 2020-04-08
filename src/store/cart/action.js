@@ -5,20 +5,18 @@ import {selectAllInventory} from '../../store/inventory/selector';
 export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
 
 export const addToCart = (car) => {
-  return(dispatch) => {
-    console.log('Prodcut added!')
-    dispatch ({
+  return{
       type: ADD_PRODUCT_TO_CART,
       payload: car
-    })
-  }
+    }
 }
 
 export const addCarToCart = (id) => {
   return async (dispatch, getState) => {
+    dispatch(appLoading());
     const inventory = selectAllInventory(getState());
-    const filteredCar = inventory.filter(car => car.id === id)
+    const filteredCar = inventory.filter(car => car.id === parseInt(id))
     dispatch(addToCart(filteredCar));
-    //dispatch(appLoading());
+    dispatch(appDoneLoading());
   }
 }

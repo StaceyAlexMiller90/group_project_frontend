@@ -19,9 +19,8 @@ export const fetchInventoryById = (id) => {
   return async (dispatch, getState) => {
     dispatch(appLoading)
     try {
-      console.log(id, 'This is the ID I am trying to get')
-      // const response = await axios.get(`${apiUrl}/cars/${id}`)
-      // dispatch(inventoryFetched(response.data))
+      const response = await axios.get(`${apiUrl}/inventory/${id}`)
+      dispatch(inventoryFetched(response.data))
     } catch(e) {
       console.log(e.message)
     } 
