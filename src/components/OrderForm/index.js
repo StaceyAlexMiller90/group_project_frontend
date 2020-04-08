@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {addOrder} from '../../store/user/actions';
 import {selectUser} from '../../store/user/selectors';
+import { selectCart } from '../../store/cart/selector';
 
 
 export default function OrderForm() {
@@ -15,8 +16,30 @@ export default function OrderForm() {
   const [postalCode, setPostalCode] = useState('');
   const [country, setCountry] = useState('');
   const user = useSelector(selectUser);
+  const cart = useSelector(selectCart)
 
+  const totals = cart.map(item => {
+    const search = item.id
 
+    const count = cart.reduce(function(n, val) {
+      return n + (val.id === search);
+    }, 0);
+
+    return {id: search, quantity: count}
+  })
+
+  const cartWithQty = (arr, comp) => {
+    const unique = arr
+         .map(e => e[comp])
+       // store the keys of the unique objects
+      .map((e, i, final) => final.indexOf(e) === i && i)
+      // eliminate the dead keys & store unique objects
+      .filter(e => arr[e]).map(e => arr[e]);
+  
+     return unique;
+  }
+
+  const uniqueCartWithQty = cartWithQty(totals, 'id')
 
   function submitOrder(event) {
     event.preventDefault();
@@ -30,7 +53,7 @@ export default function OrderForm() {
       city, 
       postalCode, 
       country,
-      user.id
+      uniqueCartWithQty
       ));
   }
 
