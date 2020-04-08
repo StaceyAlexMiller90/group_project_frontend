@@ -109,3 +109,41 @@ export const getUserWithStoredToken = () => {
     }
   };
 };
+
+export const addOrder = (
+  countryCode, 
+  phoneNumber, 
+  street, 
+  houseNumber, 
+  aptsuite, 
+  city, 
+  postalCode, 
+  country,
+  userId
+  ) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    console.log('WHAT IS STATE', state)
+    const token = state.user.token
+
+    //console.log('DISPATCH THE ORDER')
+    console.log('INFORMATION TEST', countryCode, phoneNumber, street, houseNumber, aptsuite, city, postalCode, country, userId)
+    
+    const response = axios.post(`${apiUrl}/addorder`, {
+      countryCode,
+      phoneNumber,
+      street,
+      houseNumber,
+      aptsuite,
+      city,
+      postalCode,
+      country,
+      userId
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    dispatch(showMessageWithTimeout('Success!', false, 'Order Submitted', 3000))
+  }
+}

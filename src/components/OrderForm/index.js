@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {addOrder} from '../../store/user/actions';
+import {selectUser} from '../../store/user/selectors';
 
 
 export default function OrderForm() {
@@ -12,17 +14,29 @@ export default function OrderForm() {
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [country, setCountry] = useState('');
+  const user = useSelector(selectUser);
 
 
 
   function submitOrder(event) {
     event.preventDefault();
-    console.log('BUTTON WORKING', countryCode, phoneNumber, street, houseNumber, aptsuite, city, postalCode, country)
+    // console.log('BUTTON WORKING', countryCode, phoneNumber, street, houseNumber, aptsuite, city, postalCode, country)
+    dispatch(addOrder(
+      countryCode, 
+      phoneNumber, 
+      street, 
+      houseNumber, 
+      aptsuite, 
+      city, 
+      postalCode, 
+      country,
+      user.id
+      ));
   }
 
   return (
     <div>
-      <header>Please Fill In The Following Information</header>
+      <h1>Please Fill In The Following Information</h1>
       <br></br>
 
       <form onSubmit={submitOrder}>
