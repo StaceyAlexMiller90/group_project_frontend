@@ -33,9 +33,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/inventory" component={Inventory} />
+        <Route path='/cart' component={Cart} />
         <Route path='/inventory/:id' component={InventoryById} />
         <Route path='/contact' component={Contact} />
-        <Route path='/cart' component={Cart} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
       </Switch>

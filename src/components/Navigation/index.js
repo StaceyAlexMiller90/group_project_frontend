@@ -30,7 +30,7 @@ export default function Navigation() {
           <NavbarItem path="/contact" linkText="Contact Us" />
           {token ? (
             <NavbarItem
-              path="cart"
+              path="/cart"
               linkText={`Cart: ${cart.length} - Total Price €${totalPrice}`}
             />
           ) : null}
