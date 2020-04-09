@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addOrder} from '../../store/user/actions';
 import {selectUser} from '../../store/user/selectors';
 import { selectCart } from '../../store/cart/selector';
+import Form from 'react-bootstrap/Form';
 
 
 export default function OrderForm() {
@@ -62,7 +63,7 @@ export default function OrderForm() {
       <h1>Please Fill In The Following Information</h1>
       <br></br>
 
-      <form onSubmit={submitOrder}>
+      <Form onSubmit={submitOrder}>
         Phone
         <br></br>
         <label>Country Code</label>
@@ -142,7 +143,7 @@ export default function OrderForm() {
 
         
         <button type='submit'>Submit</button>
-      </form>
+      </Form>
     </div>
   )
 }
