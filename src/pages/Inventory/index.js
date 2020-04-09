@@ -38,7 +38,7 @@ export default function Inventory() {
     <>
       <h1>All of our inventory</h1>
 
-      <Button onClick={sortCars}>Sort by Price</Button>
+      <Button variant='dark' onClick={sortCars}>Sort by Price</Button>
       <Container className='mb-4 m-auto row d-flex'>
       {sortedCars
         ? sortedInventory.map((car, i) => {

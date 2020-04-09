@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 
 export default function Cart() {
   const cart = useSelector(selectCart)
+
   console.log('WHAT IS CART', cart)
 
   const totals = cart.map(item => {
@@ -16,6 +17,8 @@ export default function Cart() {
     }, 0);
     return {...item, quantity: count}
   })
+
+  const totalPrice = cart.map((item) => item.price).reduce((a, b) => a + b, 0);
 
   const cartWithQty = (arr, comp) => {
     const unique = arr
@@ -31,7 +34,7 @@ export default function Cart() {
   
   return (
     <div>
-      <h1>Your Current Cart</h1>
+      <h1>Your Current Cart €{totalPrice}</h1>
       
       <Container className='mb-4 m-auto row d-flex align-items-stretch'>
       {uniqueCartWithQty.map(car => {
@@ -49,6 +52,7 @@ export default function Cart() {
         )
       })}
       </Container>
+
       <OrderForm cart={uniqueCartWithQty}/>
     </div>
   )

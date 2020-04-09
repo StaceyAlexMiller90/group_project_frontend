@@ -137,7 +137,7 @@ export default function OrderForm(props) {
         />
         </Form.Group>
         
-        <Button type='submit'>Submit</Button>
+        <Button variant='dark' type='submit'>Submit</Button>
       </Form>
     </div>
   )
