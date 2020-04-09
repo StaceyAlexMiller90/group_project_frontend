@@ -5,25 +5,27 @@ import {
   appLoading,
   appDoneLoading,
   showMessageWithTimeout,
-  setMessage
+  setMessage,
 } from "../appState/actions";
 
-const inventoryFetched = inventory => {
+const inventoryFetched = (inventory) => {
   return {
-    type: 'FETCH_INVENTORY_BY_ID',
-    payload: inventory
-  }
-}
+    type: "FETCH_INVENTORY_BY_ID",
+    payload: inventory,
+  };
+};
 
 export const fetchInventoryById = (id) => {
   return async (dispatch, getState) => {
-    dispatch(appLoading)
+    dispatch(appLoading);
     try {
-      const response = await axios.get(`${apiUrl}/inventory/${id}`)
-      dispatch(inventoryFetched(response.data))
-    } catch(e) {
-      console.log(e.message)
-    } 
-    dispatch(appDoneLoading)
-  }
-}
+      const response = await axios.get(`${apiUrl}/inventory/${id}`);
+      console.log(Response, response);
+
+      dispatch(inventoryFetched(response.data));
+    } catch (e) {
+      console.log(e.message);
+    }
+    dispatch(appDoneLoading);
+  };
+};
