@@ -9,7 +9,7 @@ export default function ItemsInCart(props) {
         <li>{props.model}</li>
         <li>{props.year}</li>
         <li>{props.price}</li>
-        <li>Quantity *#*</li>
+        <li>Quantity: {props.quantity}</li>
       </ul>
     </div>
   )
