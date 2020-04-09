@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-export default function OrderForm() {
+export default function OrderForm(props) {
   const dispatch = useDispatch();
   const [countryCode, setCountryCode] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState(0);
@@ -20,28 +20,7 @@ export default function OrderForm() {
   const user = useSelector(selectUser);
   const cart = useSelector(selectCart)
 
-  const totals = cart.map(item => {
-    const search = item.id
-
-    const count = cart.reduce(function(n, val) {
-      return n + (val.id === search);
-    }, 0);
-
-    return {id: search, quantity: count}
-  })
-
-  const cartWithQty = (arr, comp) => {
-    const unique = arr
-         .map(e => e[comp])
-       // store the keys of the unique objects
-      .map((e, i, final) => final.indexOf(e) === i && i)
-      // eliminate the dead keys & store unique objects
-      .filter(e => arr[e]).map(e => arr[e]);
-  
-     return unique;
-  }
-
-  const uniqueCartWithQty = cartWithQty(totals, 'id')
+ 
 
   function submitOrder(event) {
     event.preventDefault();
@@ -55,7 +34,7 @@ export default function OrderForm() {
       city, 
       postalCode, 
       country,
-      uniqueCartWithQty
+      props.cart
       ));
   }
 

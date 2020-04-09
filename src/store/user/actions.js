@@ -138,7 +138,7 @@ export const addOrder = (
     //console.log('DISPATCH THE ORDER')
     console.log('INFORMATION TEST', countryCode, phoneNumber, street, houseNumber, aptsuite, city, postalCode, country, cart)
     
-    const response = axios.post(`${apiUrl}/order`, {
+    const response = await axios.post(`${apiUrl}/order`, {
       countryCode,
       phoneNumber,
       street,
@@ -153,6 +153,7 @@ export const addOrder = (
         Authorization: `Bearer ${token}`
       }
     });
+    console.log('response', response)
     dispatch(showMessageWithTimeout('Success!', false, response.data.message, 3000))
   }
 }
