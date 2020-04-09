@@ -4,6 +4,7 @@ import {addOrder} from '../../store/user/actions';
 import {selectUser} from '../../store/user/selectors';
 import { selectCart } from '../../store/cart/selector';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
 export default function OrderForm() {
@@ -64,85 +65,99 @@ export default function OrderForm() {
       <br></br>
 
       <Form onSubmit={submitOrder}>
-        Phone
+        <h2 style={{fontsize: 25}}>Phone</h2>
         <br></br>
-        <label>Country Code</label>
-          <input 
-          countrycode='countrycode'
-          type='integer'
-          value={countryCode}
-          onChange={event => setCountryCode(event.target.value)}
-          required
-          />
-        <label>Number</label>
-          <input
-          phonenumber='phonenumber'
-          type='integer'
-          value={phoneNumber}
-          onChange={event => setPhoneNumber(event.target.value)}
-          required
-          />
-        <br></br>  
+        <Form.Group controlId="formCountryCode">
+          <Form.Label >Country Code</Form.Label>
+        <Form.Control 
+        type='integer' 
+        placeholder='Select Country Code' 
+        value={countryCode}
+        onChange={event => setCountryCode(event.target.value)}
+        required
+        />
+        </Form.Group>
 
-        Address
+        <Form.Group controlId="formPhoneNumber">
+          <Form.Label>Number</Form.Label>
+        <Form.Control 
+        type='integer' 
+        placeholder='Phone Number' 
+        value={phoneNumber}
+        onChange={event => setPhoneNumber(event.target.value)}
+        required
+        />
+        </Form.Group>
+
         <br></br>
-        <label>Street</label>
-          <input 
-          street='street'
-          type='string'
-          value={street}
-          onChange={event => setStreet(event.target.value)}
-          required
-          />
-        <label>Number</label>
-          <input 
-          housenumber='housenumber'
-          type='integer'
-          value={houseNumber}
-          onChange={event => setHouseNumber(event.target.value)}
-          required
-          />
-        <label>Apt/Suite</label>
-          <input 
-          aptsuite='aptsuite'
-          type='string'
-          value={aptsuite}
-          onChange={event => setAptsuite(event.target.value)}
-          />
-        <label>City</label>
-          <input 
-          city='city'
-          type='string'
-          value={city}
-          onChange={event => setCity(event.target.value)}
-          required
-          />
-        <label>Postal Code</label>
-          <input 
-          postalcode='postalcode'
-          type='string'
-          value={postalCode}
-          onChange={event => setPostalCode(event.target.value)}
-          required
-          />
-        <label>Country</label>
-          <input 
-          country='country'
-          type='string'
-          value={country}
-          onChange={event => setCountry(event.target.value)}
-          required
-          />
 
-        {/* to be completed to submit userId with order
-        <input 
-        type='hidden'
-        value={user.id}
-        onChnage
-        /> */}
+        <h2 style={{fontsize: 25}}>Address</h2>
+        <Form.Group controlId="formStreet">
+          <Form.Label>Street</Form.Label>
+        <Form.Control 
+        type='string' 
+        placeholder='Street' 
+        value={street}
+        onChange={event => setStreet(event.target.value)}
+        required
+        />
+        </Form.Group>
 
+        <Form.Group controlId="formHouseNumber">
+          <Form.Label>Number</Form.Label>
+        <Form.Control 
+        type='string' 
+        placeholder='House #' 
+        value={houseNumber}
+        onChange={event => setHouseNumber(event.target.value)}
+        required
+        />
+        </Form.Group>
+
+        <Form.Group controlId="formAptsuite">
+          <Form.Label>Apt/Suite</Form.Label>
+        <Form.Control 
+        type='string' 
+        placeholder='Street' 
+        value={aptsuite}
+        onChange={event => setAptsuite(event.target.value)}
+        />
+        </Form.Group>
+
+        <Form.Group controlId="formCity">
+          <Form.Label>City</Form.Label>
+        <Form.Control 
+        type='string' 
+        placeholder='City' 
+        value={city}
+        onChange={event => setCity(event.target.value)}
+        required
+        />
+        </Form.Group>
+
+        <Form.Group controlId="formPostalCode">
+          <Form.Label>Postal Code</Form.Label>
+        <Form.Control 
+        type='string' 
+        placeholder='Postal Code' 
+        value={postalCode}
+        onChange={event => setPostalCode(event.target.value)}
+        required
+        />
+        </Form.Group>
         
-        <button type='submit'>Submit</button>
+        <Form.Group controlId="formCountry">
+          <Form.Label>Country</Form.Label>
+        <Form.Control 
+        type='string' 
+        placeholder='Country' 
+        value={country}
+        onChange={event => setCountry(event.target.value)}
+        required
+        />
+        </Form.Group>
+        
+        <Button type='submit'>Submit</Button>
       </Form>
     </div>
   )
