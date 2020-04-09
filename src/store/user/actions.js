@@ -153,6 +153,6 @@ export const addOrder = (
         Authorization: `Bearer ${token}`
       }
     });
-    dispatch(showMessageWithTimeout('Success!', false, 'Order Submitted', 3000))
+    dispatch(showMessageWithTimeout('Success!', false, response.data.message, 3000))
   }
 }
