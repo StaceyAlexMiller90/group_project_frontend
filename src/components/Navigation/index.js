@@ -27,7 +27,7 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/inventory" linkText="View Our Inventory" />
-          <NavbarItem path="/contact" linkText="Contact Us" />
+          <NavbarItem path="/contact" linkText="Schedule a Test Drive" />
           {token ? (
             <NavbarItem
               path="/cart"
