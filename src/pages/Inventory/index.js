@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../components/Loading";
-import { fetchAllInventory } from "../../store/inventory/action";
-import { selectAllInventory } from "../../store/inventory/selector";
-import InventoryCard from "../../components/InventoryCard";
+import Loading from '../../components/Loading'
+import { fetchAllInventory } from '../../store/inventory/action'
+import { selectAllInventory } from '../../store/inventory/selector'
+import InventoryCard from '../../components/InventoryCard'
+import Container from 'react-bootstrap/Container';
 import Button from "react-bootstrap/Button";
 
 function comparePrice(car_a, car_b) {
   return car_b.price - car_a.price;
 }
+
 
 export default function Inventory() {
   const dispatch = useDispatch();
@@ -35,6 +37,8 @@ export default function Inventory() {
   return (
     <>
       <h1>All of our inventory</h1>
+
+        <Container className='mb-4 m-auto row d-flex'>
       <Button onClick={sortCars}>Sort by Price</Button>
       {sortedCars
         ? sortedInventory.map((car, i) => {
@@ -63,6 +67,7 @@ export default function Inventory() {
               />
             );
           })}
+  </Container>
     </>
   );
 }
