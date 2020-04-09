@@ -4,6 +4,7 @@ import Loading from '../../components/Loading'
 import { fetchAllInventory } from '../../store/inventory/action'
 import { selectAllInventory } from '../../store/inventory/selector'
 import InventoryCard from '../../components/InventoryCard'
+import Container from 'react-bootstrap/Container';
 
 export default function Inventory() {
   const dispatch = useDispatch()
@@ -22,6 +23,7 @@ export default function Inventory() {
   return (
     <>  
       <h1>All of our inventory</h1>
+      <Container className='mb-4 m-auto row d-flex'>
       {inventory.map((car, i) => {
         return <InventoryCard 
                key={i}
@@ -33,6 +35,7 @@ export default function Inventory() {
                imageUrl={car.imageUrl}
                />
       })}
+      </Container>
     </>
     )
 }

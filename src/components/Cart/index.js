@@ -3,6 +3,7 @@ import OrderForm from '../../components/OrderForm';
 import {selectCart} from '../../store/cart/selector';
 import { useSelector } from 'react-redux';
 import ItemsInCart from '../ItemsInCart';
+import Container from 'react-bootstrap/Container';
 
 export default function Cart() {
   const cart = useSelector(selectCart)
@@ -31,6 +32,8 @@ export default function Cart() {
   return (
     <div>
       <h1>Your Current Cart</h1>
+      
+      <Container className='mb-4 m-auto row d-flex align-items-stretch'>
       {uniqueCartWithQty.map(car => {
         return (
         <ItemsInCart 
@@ -45,7 +48,7 @@ export default function Cart() {
         />
         )
       })}
-
+      </Container>
       <OrderForm cart={uniqueCartWithQty}/>
     </div>
   )
