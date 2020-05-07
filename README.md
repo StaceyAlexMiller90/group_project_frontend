@@ -1,3 +1,5 @@
+# Week 8 Group Project as part of Codaisseur bootcamp
+
 # Frontend template
 
 This is a simple react/redux/jwt template to start a project quickly
